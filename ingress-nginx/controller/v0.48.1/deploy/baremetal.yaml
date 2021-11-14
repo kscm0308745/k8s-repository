@@ -275,6 +275,10 @@ metadata:
   namespace: ingress-nginx
 spec:
   type: NodePort
+  ipFamilyPolicy: PreferDualStack
+  ipFamilies:
+    - IPv4
+    - IPv6
   ports:
     - name: http
       port: 80
@@ -322,7 +326,7 @@ spec:
       dnsPolicy: ClusterFirst
       containers:
         - name: controller
-          image: registry.cn-shanghai.aliyuncs.com/aliyunwsc/ingress-nginx:v0.48.1
+          image: registry.cn-shanghai.aliyuncs.com/aliyunwsc/ingress-nginx-controller:v0.48.1
           imagePullPolicy: IfNotPresent
           lifecycle:
             preStop:
